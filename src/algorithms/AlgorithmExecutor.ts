@@ -31,7 +31,7 @@ export abstract class AlgorithmExecutor<T> {
       id: this.generateId(),
       step: this.snapshots.length,
       description,
-      data: JSON.parse(JSON.stringify(data)), // 深拷贝
+      data: typeof structuredClone === 'function' ? structuredClone(data) : JSON.parse(JSON.stringify(data)), // 深拷贝，优先使用 structuredClone 支持 Map/Set
       highlightedElements,
       codeLineIndex,
       variables,

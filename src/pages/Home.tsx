@@ -20,7 +20,7 @@ const features = [
   {
     icon: List,
     title: '线性表',
-    description: '数组与链表的插入、删除、查找操作可视化',
+    description: '顺序表与链表的核心概念、时间复杂度分析与动画演示',
     path: '/linear-list',
     color: 'from-blue-500 to-cyan-500',
     shadowColor: 'shadow-blue-500/25',
@@ -28,15 +28,15 @@ const features = [
   {
     icon: Layers,
     title: '栈与队列',
-    description: '栈的 LIFO 和队列的 FIFO 特性演示',
+    description: '栈的 LIFO 与队列的 FIFO 原理讲解及应用场景',
     path: '/stack-queue',
     color: 'from-purple-500 to-pink-500',
     shadowColor: 'shadow-purple-500/25',
   },
   {
     icon: GitBranch,
-    title: '树',
-    description: '二叉树遍历、AVL 树旋转、哈夫曼树构造',
+    title: '树与二叉树',
+    description: '二叉树遍历算法、赫夫曼树编码与核心公式讲解',
     path: '/tree',
     color: 'from-green-500 to-emerald-500',
     shadowColor: 'shadow-green-500/25',
@@ -44,7 +44,7 @@ const features = [
   {
     icon: Share2,
     title: '图',
-    description: 'DFS/BFS 搜索、最短路径、最小生成树',
+    description: 'DFS/BFS遍历、最短路径算法与最小生成树理论',
     path: '/graph',
     color: 'from-orange-500 to-amber-500',
     shadowColor: 'shadow-orange-500/25',
@@ -52,7 +52,7 @@ const features = [
   {
     icon: BarChart3,
     title: '排序算法',
-    description: '冒泡、快排、归并、堆排序动画对比',
+    description: '四大类排序算法详解：插入、交换、选择、归并',
     path: '/sort',
     color: 'from-red-500 to-rose-500',
     shadowColor: 'shadow-red-500/25',
@@ -60,7 +60,7 @@ const features = [
   {
     icon: Search,
     title: '查找算法',
-    description: '二分查找、BST、哈希表查找过程',
+    description: '静态查找、BST、AVL 与哈希表原理及 ASL 计算',
     path: '/search',
     color: 'from-indigo-500 to-violet-500',
     shadowColor: 'shadow-indigo-500/25',
@@ -69,23 +69,23 @@ const features = [
 
 const highlights = [
   {
-    icon: Zap,
-    title: '实时动画',
-    description: '流畅的 60fps 动画展示算法执行过程',
+    icon: BookOpen,
+    title: '理论讲解',
+    description: '结合讲解文档，系统学习数据结构核心概念',
     color: 'text-yellow-400',
     bg: 'bg-yellow-400/10',
   },
   {
-    icon: BookOpen,
-    title: '代码同步',
-    description: '动画与伪代码高亮同步，理解更深入',
+    icon: Zap,
+    title: '动画演示',
+    description: '流畅动画辅助理解，让抽象概念可视化',
     color: 'text-blue-400',
     bg: 'bg-blue-400/10',
   },
   {
     icon: Play,
-    title: '交互控制',
-    description: '自由控制播放速度，按自己节奏学习',
+    title: '考试要点',
+    description: '必考公式、避坑指南，助力考试复习',
     color: 'text-green-400',
     bg: 'bg-green-400/10',
   },
@@ -124,13 +124,13 @@ export default function Home() {
           <span className="text-white mt-2 block">可视化学习平台</span>
         </h1>
         <p className="text-lg lg:text-xl text-slate-400 max-w-2xl mx-auto mb-8 leading-relaxed">
-          通过交互式动画深入理解数据结构与算法，
+          <span className="text-blue-400">理论讲解</span>为主，<span className="text-purple-400">动画演示</span>为辅，
           <br className="hidden sm:block" />
-          让抽象概念变得<span className="text-blue-400">生动直观</span>
+          系统学习数据结构与算法核心知识
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link
-            to="/sort"
+            to="/linear-list"
             className="group inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium transition-all duration-300 shadow-lg shadow-blue-600/30 hover:shadow-blue-500/50 hover:scale-105"
           >
             开始学习
