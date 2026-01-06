@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-node: #3b82f6;
+  --color-node-active: #ef4444;
+  --color-node-visited: #22c55e;
+  --color-node-comparing: #f59e0b;
+  --color-edge: #64748b;
+  --color-edge-active: #ef4444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+/* 背景装饰 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(139, 92, 246, 0.1), transparent),
+    radial-gradient(ellipse 40% 30% at 10% 80%, rgba(34, 197, 94, 0.08), transparent);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #475569, #64748b);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #64748b, #94a3b8);
+}
+
+/* 代码高亮样式 */
+.code-line {
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.code-line.active {
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.25), transparent);
+  border-left-color: #3b82f6;
+  box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+/* 节点样式 */
+.ds-node {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ds-node:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+/* 卡片悬浮效果 */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.3),
+    0 0 30px -5px rgba(59, 130, 246, 0.2);
+}
+
+/* 毛玻璃效果 */
+.glass {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(71, 85, 105, 0.5);
+}
+
+/* 渐变边框效果 */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* 动画效果 */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 1s ease-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* 进度条样式 */
+.progress-bar {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease infinite;
+}
+
+/* 按钮样式 */
+.btn-primary {
+  @apply px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium;
+  @apply hover:from-blue-500 hover:to-purple-500 transition-all duration-300;
+  @apply shadow-lg shadow-blue-600/25 hover:shadow-blue-500/40;
+  @apply active:scale-95;
+}
+
+.btn-secondary {
+  @apply px-6 py-2.5 bg-slate-700/50 text-white rounded-lg font-medium;
+  @apply hover:bg-slate-600/50 transition-all duration-300 border border-slate-600;
+  @apply hover:border-slate-500 active:scale-95;
+}
+
+/* 输入框样式 */
+.input-field {
+  @apply w-full px-4 py-2.5 bg-slate-900/50 border border-slate-600 rounded-lg text-white;
+  @apply focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20;
+  @apply placeholder:text-slate-500 transition-all duration-300;
+}
+
+/* 选择文本样式 */
+::selection {
+  background: rgba(59, 130, 246, 0.4);
+  color: #fff;
+}
+
+/* 数组柱状图样式 */
+.bar {
+  transition: all 0.3s ease;
+}
+
+.bar.comparing {
+  background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+}
+
+.bar.swapping {
+  background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+}
+
+.bar.sorted {
+  background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+}
